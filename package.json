@@ -8,8 +8,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "prepare": "run-s lint build copyright",
-    "postpublish": "run-s gh-pages:deploy",
-    "gh-pages:deploy": "gh-pages -d .",
+    "postpublish": "run-s gh-pages:build gh-pages:deploy",
+    "gh-pages:build": "cpy demo.html ./dist --rename=index.html",
+    "gh-pages:deploy": "gh-pages -d ./dist",
     "copyright": "update license",
     "lint": "eslint src",
     "build": "rollup -c"
@@ -29,15 +30,16 @@
   "homepage": "https://github.com/lambdalisue/cytoscape-dblclick",
   "license": "MIT",
   "devDependencies": {
+    "@types/cytoscape": "^3.3.0",
+    "cpy-cli": "^2.0.0",
     "eslint": "^3.9.1",
     "gh-pages": "^1.0.0",
     "npm-run-all": "^4.1.2",
-    "update": "^0.7.4",
-    "updater-license": "^1.0.0",
-    "@types/cytoscape": "^3.3.0",
     "rollup": "^1.4.1",
     "rollup-plugin-typescript2": "^0.19.3",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "update": "^0.7.4",
+    "updater-license": "^1.0.0"
   },
   "peerDependencies": {
     "cytoscape": "^3.4.2"
