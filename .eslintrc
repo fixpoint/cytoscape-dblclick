@@ -6,8 +6,27 @@
         "amd": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "prettier",
+      "prettier/@typescript-eslint",
+      "eslint:recommended"
+    ],
     "rules": {
-      "semi": "error"
-    }
+      "semi": "error",
+      "@typescript-eslint/no-explicit-any": "off",
+      "prettier/prettier": [
+        "error",
+        {
+            "singleQuote": true,
+            "trailingComma": "all"
+        }
+      ]
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ]
 }

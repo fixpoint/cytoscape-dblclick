@@ -12,7 +12,8 @@
     "gh-pages:build": "cpy demo.html ./dist --rename=index.html",
     "gh-pages:deploy": "gh-pages -d ./dist",
     "copyright": "update license",
-    "lint": "eslint src",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
     "build": "rollup -c"
   },
   "author": {
@@ -31,10 +32,15 @@
   "license": "MIT",
   "devDependencies": {
     "@types/cytoscape": "^3.3.0",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
     "cpy-cli": "^2.0.0",
-    "eslint": "^3.9.1",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "gh-pages": "^1.0.0",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.16.4",
     "rollup": "^1.4.1",
     "rollup-plugin-typescript2": "^0.19.3",
     "typescript": "^3.3.3333",

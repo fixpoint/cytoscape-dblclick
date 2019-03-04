@@ -3,8 +3,11 @@ import { Core, EventObject } from 'cytoscape';
 // https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setdoubleclicktime
 const INTERVAL = 500;
 
-export default function extension(this: Core, interval: number = INTERVAL) {
-  let clicked: any = null;
+export default function extension(
+  this: Core,
+  interval: number = INTERVAL,
+): Core {
+  let clicked: any | null = null;
 
   this.on('click', (evt: EventObject) => {
     if (clicked && clicked === evt.target) {
@@ -24,7 +27,7 @@ export default function extension(this: Core, interval: number = INTERVAL) {
   });
 
   return this; // chainability
-};
+}
 
 declare module 'cytoscape' {
   interface Core {
