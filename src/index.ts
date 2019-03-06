@@ -1,4 +1,3 @@
-import { Core } from 'cytoscape';
 import extension from './core';
 
 export function register(cy?: any, ...args: any[]) {
