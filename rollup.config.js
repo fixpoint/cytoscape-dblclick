@@ -8,7 +8,7 @@ export default {
       format: 'umd',
       name: 'cytoscapeExtensionSkeleton',
       global: {
-        'cytoscape': 'Cytoscape',
+        cytoscape: 'Cytoscape',
       },
     },
     {
@@ -20,17 +20,15 @@ export default {
       format: 'esm',
     },
   ],
-  external: [
-    'cytoscape',
-  ],
+  external: ['cytoscape'],
   plugins: [
     typescript({
       tsconfigOverride: {
         compilerOptions: {
-          module: "esnext",
-          moduleResolution: "node",
+          module: 'esnext',
+          moduleResolution: 'node',
         },
       },
     }),
   ],
-}
+};

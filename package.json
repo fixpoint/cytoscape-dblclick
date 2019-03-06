@@ -2,9 +2,9 @@
   "name": "cytoscape-dblclick",
   "version": "0.2.0",
   "description": "Add dblclick event",
-  "main": "dist/index.common.js",
-  "module": "dist/index.esm.js",
-  "unpkg": "dist/index.js",
+  "main": "./dist/index.common.js",
+  "module": "./dist/index.esm.js",
+  "unpkg": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "prepare": "run-s lint build copyright",
