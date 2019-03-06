@@ -1,6 +1,6 @@
 import extension from './core';
 
-export function register(cy?: any, ...args: any[]) {
+export default function register(cy?: any, ...args: any[]): void {
   if (!cy) {
     return;
   }
