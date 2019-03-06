@@ -1,5 +1,8 @@
 .cache/
 .rpt2_cache/
+.eslintignore
+.eslintrc
+.prettierrc
 node_modules/
 src/
 dist/index.html
