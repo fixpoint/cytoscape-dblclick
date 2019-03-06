@@ -1,7 +1,8 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+require('cytoscape');
 
+// https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setdoubleclicktime
 var INTERVAL = 500;
 function extension(interval) {
     if (interval === void 0) { interval = INTERVAL; }
@@ -23,22 +24,24 @@ function extension(interval) {
             }, interval);
         }
     });
-    return this;
+    return this; // chainability
 }
 
 function register(cy) {
-    var args = [];
-    for (var _i = 1; _i < arguments.length; _i++) {
-        args[_i - 1] = arguments[_i];
-    }
     if (!cy) {
         return;
     }
+    // Initialize extension
+    // Register extension
     var extensionName = 'dblclick';
     cy('core', extensionName, extension);
+    // cy('collection', extensionName, extension);
+    // cy('layout', extensionName, extension);
+    // cy('renderer', extensionName, extension);
 }
-if (typeof cytoscape !== 'undefined') {
-    register(cytoscape);
+if (typeof window.cytoscape !== 'undefined') {
+    register(window.cytoscape);
 }
 
-exports.register = register;
+module.exports = register;
+//# sourceMappingURL=index.common.js.map
