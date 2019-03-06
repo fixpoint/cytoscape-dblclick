@@ -28,9 +28,3 @@ export default function extension(
 
   return this; // chainability
 }
-
-declare module 'cytoscape' {
-  interface Core {
-    dblclick(interval?: number): void;
-  }
-}

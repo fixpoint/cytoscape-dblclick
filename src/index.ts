@@ -1,6 +1,6 @@
 import extension from './core';
 
-export default function register(cy?: any, ...args: any[]): void {
+export default function register(cy?: any): void {
   if (!cy) {
     return;
   }
@@ -14,10 +14,21 @@ export default function register(cy?: any, ...args: any[]): void {
   // cy('renderer', extensionName, extension);
 }
 
-// Automatically register the extension
-declare const cytoscape: any;
+// Automatically register the extension for browser
+declare global {
+  interface Window {
+    cytoscape?: any;
+  }
+}
+if (typeof window.cytoscape !== 'undefined') {
+  register(window.cytoscape);
+}
 
-if (typeof cytoscape !== 'undefined') {
-  // expose to global cytoscape (i.e. window.cytoscape)
-  register(cytoscape);
+// Extend cytoscape.Core
+import 'cytoscape';
+
+declare module 'cytoscape' {
+  interface Core {
+    dblclick(interval?: number): void;
+  }
 }
