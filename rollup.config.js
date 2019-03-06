@@ -1,34 +1,42 @@
 import typescript from 'rollup-plugin-typescript2';
+import pkg from './package.json';
 
-export default {
-  input: './src/index.ts',
-  output: [
-    {
-      file: './dist/index.js',
-      format: 'umd',
-      name: 'cytoscapeExtensionSkeleton',
-      global: {
-        cytoscape: 'Cytoscape',
-      },
-    },
-    {
-      file: './dist/index.common.js',
-      format: 'cjs',
-    },
-    {
-      file: './dist/index.esm.js',
-      format: 'esm',
-    },
-  ],
-  external: ['cytoscape'],
-  plugins: [
-    typescript({
-      tsconfigOverride: {
-        compilerOptions: {
-          module: 'esnext',
-          moduleResolution: 'node',
+const input = 'src/index.ts';
+const external = [
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+];
+const plugins = [
+  typescript({
+    typescript: require('typescript'),
+  }),
+];
+
+export default [
+  {
+    input,
+    plugins,
+    external,
+    output: [
+      {
+        file: pkg.unpkg,
+        format: 'umd',
+        name: 'cytoscapeDlbclick',
+        global: {
+          cytoscape: 'Cytoscape',
         },
+        sourcemap: true,
       },
-    }),
-  ],
-};
+      {
+        file: pkg.main,
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: pkg.module,
+        format: 'es',
+        sourcemap: true,
+      },
+    ],
+  },
+];
