@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
-    "outDir": "./dist",
+    "resolveJsonModule": true,
     "declaration": true,
-    "sourceMap": true,
-    "removeComments": true,
     "strict": true
   }
 }
