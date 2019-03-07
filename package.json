@@ -6,6 +6,11 @@
   "module": "./dist/index.esm.js",
   "unpkg": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "src",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "prepare": "run-s lint build copyright",
     "postpublish": "run-s gh-pages:build gh-pages:deploy",
